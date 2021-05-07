@@ -31,8 +31,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
 
         http.formLogin()
-                .defaultSuccessUrl("/home", true)
-                .and().logout();
+                .loginPage("/login")
+                .defaultSuccessUrl("/message", true)
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .clearAuthentication(true)
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID", "remember-me")
+                .permitAll();
     }
 
     @Override

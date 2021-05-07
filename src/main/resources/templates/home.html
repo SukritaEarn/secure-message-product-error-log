@@ -10,7 +10,9 @@
 <body>
 
 <div class="container">
-    <h1 class="display-4" th:text="${greeting}"></h1>
+    <div class="jumbotron">
+        <h1 class="display-4" th:text="${greeting}"></h1>
+    </div>
 
     <div sec:authorize="isAnonymous()">
         <a th:href="@{/signup}">Signup</a> or
